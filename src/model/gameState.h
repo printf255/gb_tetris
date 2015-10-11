@@ -1,7 +1,10 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
-
-
+enum GameState{
+    GAMESTATE_PLAYING,
+    GAMESTATE_PAUSED,
+    GAMESTATE_GAMEOVER
+};
 
 #endif
