@@ -7,7 +7,7 @@ BIN_DEBUG=bin/debug.gb
 GB_FRAMEWORK_SRC=../gb_framework/src/sound.c ../gb_framework/src/gfx.c
 GB_FRAMEWORK_TILES=../gb_framework/src/tiles/colorRects.c
 
-SRC=src/main.c
+SRC=src/main.c src/block/block.c src/controller/controller.c src/model/model.c src/view/view.c
 #TILES=src/tiles/white.c src/tiles/light_grey.c src/tiles/dark_grey.c src/tiles/black.c
 TILES=
 
