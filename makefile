@@ -4,7 +4,7 @@ BIN_RELEASE=bin/release.gb
 BIN_DEBUG=bin/debug.gb
 
 #GB_FRAMEWORK_DIR=../gb_framework/src/
-GB_FRAMEWORK_SRC=../gb_framework/src/sound.c ../gb_framework/src/gfx.c
+GB_FRAMEWORK_SRC=../gb_framework/src/sound.c ../gb_framework/src/gfx.c ../gb_framework/src/timer.c
 GB_FRAMEWORK_TILES=../gb_framework/src/tiles/colorRects.c
 
 SRC=src/main.c src/block/block.c src/controller/controller.c src/model/model.c src/view/view.c
