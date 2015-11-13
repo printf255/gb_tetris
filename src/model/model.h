@@ -5,20 +5,21 @@
 #include "game_state.h"
 
 extern const UINT8 SCORE_PER_LINE;
+extern const UINT8 SCORE_PER_BLOCK;
 extern const UINT8 GRID_WIDTH;
 extern const UINT8 GRID_HEIGHT;
 
-BOOLEAN grid[10][18];
-UINT8 grid_tiles[10][18];
-enum game_state game_state = GAME_STATE_GAMEOVER;
-float time_played = 0.0f;
-UINT32 score = 0;
-UINT8 speed = 1;
-UINT16 lines_cleared = 0;
-INT8 current_block_pos_x = 0;
-INT8 current_block_pos_y = 0;
-//currentBlock?
-UINT8 step_time = 16;//in 16th seconds
+extern BOOLEAN grid[10][18];
+extern UINT8 grid_tiles[10][18];
+extern volatile enum game_state game_state;
+extern UINT16 time_played;
+extern UINT32 score;
+extern UINT8 speed;
+extern UINT16 lines_cleared;
+extern INT8 current_block_pos_x;
+extern INT8 current_block_pos_y;
+extern UINT8 step_time;//in 16th seconds
+extern BOOLEAN has_current_block;
 
 
 void reset_model();

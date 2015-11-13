@@ -1,8 +1,22 @@
 #include "model.h"
 
 const UINT8 SCORE_PER_LINE = 100;
+const UINT8 SCORE_PER_BLOCK = 10;
 const UINT8 GRID_WIDTH = 10;
 const UINT8 GRID_HEIGHT = 20;
+
+BOOLEAN grid[10][18];
+UINT8 grid_tiles[10][18];
+volatile enum game_state game_state = GAME_STATE_GAMEOVER;
+UINT16 time_played = 0;
+UINT32 score = 0;
+UINT8 speed = 1;
+UINT16 lines_cleared = 0;
+INT8 current_block_pos_x = 0;
+INT8 current_block_pos_y = 0;
+UINT8 step_time = 16;//in 16th seconds
+BOOLEAN has_current_block = FALSE;
+
 
 void reset_model(){
     UINT8 i = 0;

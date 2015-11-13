@@ -2,13 +2,13 @@
 
 #include <stdlib.h>
 
-const SHAPE_TYPE_I = 0;
-const SHAPE_TYPE_J = 1;
-const SHAPE_TYPE_L = 2;
-const SHAPE_TYPE_O = 3;
-const SHAPE_TYPE_S = 4;
-const SHAPE_TYPE_T = 5;
-const SHAPE_TYPE_Z = 6;
+const UINT8 SHAPE_TYPE_I = 0;
+const UINT8 SHAPE_TYPE_J = 1;
+const UINT8 SHAPE_TYPE_L = 2;
+const UINT8 SHAPE_TYPE_O = 3;
+const UINT8 SHAPE_TYPE_S = 4;
+const UINT8 SHAPE_TYPE_T = 5;
+const UINT8 SHAPE_TYPE_Z = 6;
 
 const BOOLEAN shape_grids[7][4][4][4] = {
     {
