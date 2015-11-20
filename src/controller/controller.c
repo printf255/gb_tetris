@@ -59,16 +59,16 @@ void debug_stuff(){
         /*grid_tiles[9-x][16] = 14;*/
     /*}*/
 
-    for(y = 17; y >= 10; y--){
-        for(x = 0; x < 4; x++){
-            set_grid_cell(x, y, TRUE);
-            grid_tiles[x][y] = 14;
-        }
-        for(x = 9; x >= 5; x--){
-            set_grid_cell(x, y, TRUE);
-            grid_tiles[x][y] = 14;
-        }
-    }
+    /*for(y = 17; y >= 10; y--){*/
+        /*for(x = 0; x < 4; x++){*/
+            /*set_grid_cell(x, y, TRUE);*/
+            /*grid_tiles[x][y] = 14;*/
+        /*}*/
+        /*for(x = 9; x >= 5; x--){*/
+            /*set_grid_cell(x, y, TRUE);*/
+            /*grid_tiles[x][y] = 14;*/
+        /*}*/
+    /*}*/
 
 
 
@@ -101,8 +101,6 @@ void update(UINT16 delta){
         if(step_time_accum > step_time){
             step_time_accum = 0;
             step();
-            ga_changed = TRUE;
-            intf_changed = TRUE;
         }
     }
 
@@ -171,6 +169,8 @@ void step(){
         //TODO: play sound land
     }
 
+    ga_changed = TRUE;
+    intf_changed = TRUE;
 
 }
 
@@ -248,6 +248,10 @@ void new_game(){
 
     spawn_new_block();
     game_state = GAME_STATE_PLAYING;
+
+    ga_changed = TRUE;
+    intf_changed = TRUE;
+    intf_full_clear_needed = TRUE;
 
     //TODO: restart background music if already running
 

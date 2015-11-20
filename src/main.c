@@ -64,7 +64,7 @@ int main(){
         frame_counter++;
         fps = frame_counter / (time16/16);
         sprintf(text, "fps %u", fps);
-        add_log_line(text);
+        /*add_log_line(text);*/
 
 
 

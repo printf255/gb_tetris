@@ -55,6 +55,7 @@ void initialize_view(){
 void render(){
 
     UINT8 i;
+    char text[20];
 
     /*if(render_ga){*/
         /*render_ga = !render_ga;*/
@@ -145,7 +146,16 @@ void render(){
         if(intf_changed){
             intf_changed = FALSE;
 
-            set_intf_mul(0, 10, 10, 8, 0);
+            if(intf_full_clear_needed){
+                sprintf(text, "full clear");
+                add_log_line(text);
+                intf_full_clear_needed = FALSE;
+                set_intf_mul(0, 0, 10, 18, TILE_WHITE);
+            }
+            else{
+                set_intf_mul(0, 10, 10, 8, TILE_WHITE);
+            }
+
             render_interface();
             write_intf();
         }
@@ -222,10 +232,10 @@ void render_interface(){
     render_text_intf(2, 8, text);
 
     //fps
-    sprintf(text, "fps");
-    render_text_intf(2, 9, text);
-    sprintf(text, "%u", fps);
-    render_text_intf(2, 10, text);
+    /*sprintf(text, "fps");*/
+    /*render_text_intf(2, 9, text);*/
+    /*sprintf(text, "%u", fps);*/
+    /*render_text_intf(2, 10, text);*/
 
     //game state
     /*game_state = GAME_STATE_PAUSED;*/
@@ -235,14 +245,22 @@ void render_interface(){
         render_text_intf(2, 12, text);
     }
     else if(game_state == GAME_STATE_GAMEOVER){
-        sprintf(text, "game over");
+        sprintf(text, "game");
         render_text_intf(1, 12, text);
+        sprintf(text, "over");
+        render_text_intf(6, 12, text);
+
         sprintf(text, "press");
         render_text_intf(3, 13, text);
-        sprintf(text, "start for");
+        sprintf(text, "start");
         render_text_intf(1, 14, text);
-        sprintf(text, "a new");
+        sprintf(text, "for");
+        render_text_intf(7, 14, text);
+
+        sprintf(text, "a");
         render_text_intf(3, 15, text);
+        sprintf(text, "new");
+        render_text_intf(5, 15, text);
         sprintf(text, "game");
         render_text_intf(4, 16, text);
     }

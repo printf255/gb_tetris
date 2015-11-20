@@ -23,6 +23,7 @@ UINT16 fps = 0;
 
 BOOLEAN ga_changed = TRUE;
 BOOLEAN intf_changed = TRUE;
+BOOLEAN intf_full_clear_needed = TRUE;
 
 
 BOOLEAN get_grid_cell(UINT8 x, UINT8 y){

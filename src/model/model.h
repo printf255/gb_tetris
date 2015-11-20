@@ -26,6 +26,7 @@ extern UINT16 fps;
 
 extern BOOLEAN ga_changed;
 extern BOOLEAN intf_changed;
+extern BOOLEAN intf_full_clear_needed;
 
 
 void reset_model();
