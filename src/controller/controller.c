@@ -3,6 +3,7 @@
 #include "../../../gb_framework/src/input.h"
 #include "../../../gb_framework/src/timer.h"
 #include "../../../gb_framework/src/log.h"
+#include "../../../gb_framework/src/sound.h"
 
 /*#include <stdlib.h>*/
 /*#include <rand.h>*/
@@ -31,6 +32,13 @@ void spawn_new_block();
 void clear_lines();
 void clear_line(UINT8 line);
 void increase_speed_if_needed();
+
+void play_sound_game_over();
+void play_sound_land();
+void play_sound_line();
+void play_sound_move();
+void play_sound_pause();
+void play_sound_rotate();
 
 
 //TODO: remove later
@@ -108,10 +116,18 @@ void update(UINT16 delta){
 
 
 }
+
 void handle_input(){
 
     if(is_button_just_pressed(J_SELECT)){
-        debug_rendering = !debug_rendering;
+        /*debug_rendering = !debug_rendering;*/
+
+        /*play_sound_game_over();*/
+        /*play_sound_land();*/
+        /*play_sound_line();*/
+        /*play_sound_move();*/
+        /*play_sound_pause();*/
+        /*play_sound_rotate();*/
     }
 
     if(is_button_just_pressed(J_START)){
@@ -166,7 +182,7 @@ void step(){
         spawn_new_block();
         score += SCORE_PER_BLOCK;
 
-        //TODO: play sound land
+        play_sound_land();
     }
 
     ga_changed = TRUE;
@@ -180,7 +196,7 @@ void move_block_left(){
         return;
     if(!does_collide(DIRECTION_LEFT)){
         current_block_pos_x -= 1;
-        //TODO: play sound move
+        play_sound_move();
     }
 
 }
@@ -191,7 +207,7 @@ void move_block_right(){
         return;
     if(!does_collide(DIRECTION_RIGHT)){
         current_block_pos_x += 1;
-        //TODO: play sound move
+        play_sound_move();
     }
 
 }
@@ -220,7 +236,7 @@ void rotate_block(){
             rotate();
     }
     else{
-        //TODO: play sound rotate
+        play_sound_rotate();
     }
 
 }
@@ -230,11 +246,12 @@ void toggle_pause(){
     if(game_state == GAME_STATE_PLAYING){
         game_state = GAME_STATE_PAUSED;
         //TODO: stop playing background music
-        //TODO: play sound pause
+        play_sound_pause();
     }
     else if(game_state == GAME_STATE_PAUSED){
         game_state = GAME_STATE_PLAYING;
         //TODO: continue playing background music
+        play_sound_pause();
     }
 }
 
@@ -386,7 +403,7 @@ void spawn_new_block(){
         game_state = GAME_STATE_GAMEOVER;
         intf_changed = TRUE;
         //TODO: stop playing background music
-        //TODO: play gameOver sound
+        play_sound_game_over();
     }
 
     has_current_block = TRUE;
@@ -413,8 +430,8 @@ void clear_lines(){
         }
     }
 
-    /*if(play_sound)*/
-        //TODO: play sound line
+    if(play_sound)
+        play_sound_line();
 
 }
 
@@ -457,6 +474,110 @@ void increase_speed_if_needed(){
 
 }
 
+void play_sound_game_over(){
+
+    UINT8 volume = 15;
+    UINT16 frequency = 400;
+    UINT8 envInc = 0;
+    UINT8 envIntensity = 7;
+    UINT8 length = 64;
+    UINT8 sweepTime = 7;
+    UINT8 freqDec = 1;
+    UINT8 sweepIntensity = 6;
+
+    sound1_envelope_length_swee(volume, frequency,
+            envInc, envIntensity, length,
+            sweepTime, freqDec, sweepIntensity);
+
+}
+
+void play_sound_land(){
+
+    UINT8 volume = 10;
+    UINT16 frequency = 500;
+    UINT8 envInc = 0;
+    UINT8 envIntensity = 0;
+    UINT8 length = 30;
+    UINT8 sweepTime = 0;
+    UINT8 freqDec = 0;
+    UINT8 sweepIntensity = 0;
+
+    /*sound1_envelope_length_swee(volume, frequency,*/
+            /*envInc, envIntensity, length,*/
+            /*sweepTime, freqDec, sweepIntensity);*/
+
+    sound2_length(volume, frequency, length);
+
+}
+
+void play_sound_line(){
+
+    UINT8 volume = 15;
+    UINT16 frequency = 500;
+    UINT8 envInc = 0;
+    UINT8 envIntensity = 3;
+    UINT8 length = 64;
+    UINT8 sweepTime = 7;
+    UINT8 freqDec = 0;
+    UINT8 sweepIntensity = 6;
+
+    sound1_envelope_length_swee(volume, frequency,
+            envInc, envIntensity, length,
+            sweepTime, freqDec, sweepIntensity);
+
+}
+
+void play_sound_move(){
+
+    UINT8 volume = 15;
+    UINT16 frequency = 180;
+    UINT8 envInc = 0;
+    UINT8 envIntensity = 0;
+    UINT8 length = 15;
+    UINT8 sweepTime = 0;
+    UINT8 freqDec = 0;
+    UINT8 sweepIntensity = 0;
+
+    sound1_envelope_length_swee(volume, frequency,
+            envInc, envIntensity, length,
+            sweepTime, freqDec, sweepIntensity);
+
+}
+
+void play_sound_pause(){
+
+    UINT8 volume = 15;
+    UINT16 frequency = 400;
+    UINT8 envInc = 0;
+    UINT8 envIntensity = 2;
+    UINT8 length = 64;
+    UINT8 sweepTime = 0;
+    UINT8 freqDec = 0;
+    UINT8 sweepIntensity = 0;
+
+    sound1_envelope_length_swee(volume, frequency,
+            envInc, envIntensity, length,
+            sweepTime, freqDec, sweepIntensity);
+
+
+}
+
+void play_sound_rotate(){
+
+    UINT8 volume = 15;
+    UINT16 frequency = 500;
+    UINT8 envInc = 0;
+    UINT8 envIntensity = 1;
+    UINT8 length = 64;
+    UINT8 sweepTime = 4;
+    UINT8 freqDec = 0;
+    UINT8 sweepIntensity = 7;
+
+    sound1_envelope_length_swee(volume, frequency,
+            envInc, envIntensity, length,
+            sweepTime, freqDec, sweepIntensity);
+
+}
 
 
 
