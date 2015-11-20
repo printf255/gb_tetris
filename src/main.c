@@ -22,8 +22,8 @@ int main(){
     UINT16 time16_diff;
     char text[20];
     UINT8 i;
-    UINT16 frame_counter = 0;
-    UINT16 fps = 0;
+    /*UINT16 frame_counter = 0;*/
+    /*UINT16 fps = 0;*/
 
     /*initrand( ((UINT16)DIV_REG << 8) | DIV_REG);*/
 
@@ -59,7 +59,7 @@ int main(){
         /*wait_vbl_done();*/
         /*set_bkg_mul(0, 0, 20, 18, 0);*/
         /*wait_vbl_done();*/
-        write_bkg();
+        /*write_bkg();*/
 
         frame_counter++;
         fps = frame_counter / (time16/16);

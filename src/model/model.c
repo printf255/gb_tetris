@@ -8,6 +8,7 @@ const UINT8 GRID_HEIGHT = 18;
 BOOLEAN grid[10][18];
 UINT8 grid_tiles[10][18];
 volatile enum game_state game_state = GAME_STATE_GAMEOVER;
+/*volatile enum game_state game_state = GAME_STATE_PLAYING;*/
 UINT16 time_played = 0;
 UINT32 score = 0;
 UINT8 speed = 1;
@@ -16,6 +17,12 @@ INT8 current_block_pos_x = 0;
 INT8 current_block_pos_y = 0;
 UINT8 step_time = 16;//in 16th seconds
 BOOLEAN has_current_block = FALSE;
+
+UINT16 frame_counter = 0;
+UINT16 fps = 0;
+
+BOOLEAN ga_changed = TRUE;
+BOOLEAN intf_changed = TRUE;
 
 
 BOOLEAN get_grid_cell(UINT8 x, UINT8 y){

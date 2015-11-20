@@ -21,6 +21,12 @@ extern INT8 current_block_pos_y;
 extern UINT8 step_time;//in 16th seconds
 extern BOOLEAN has_current_block;
 
+extern UINT16 frame_counter;
+extern UINT16 fps;
+
+extern BOOLEAN ga_changed;
+extern BOOLEAN intf_changed;
+
 
 void reset_model();
 

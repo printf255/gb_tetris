@@ -1,6 +1,7 @@
 #include "controller.h"
 
 #include "../../../gb_framework/src/input.h"
+#include "../../../gb_framework/src/timer.h"
 #include "../../../gb_framework/src/log.h"
 
 /*#include <stdlib.h>*/
@@ -80,6 +81,7 @@ void update(UINT16 delta){
 
     char text[20];
 
+
     handle_input();
 
     /*sprintf(text, "tp: %u", time_played);*/
@@ -90,11 +92,17 @@ void update(UINT16 delta){
     /*game_state = GAME_STATE_PLAYING;*/
 
     if(game_state == GAME_STATE_PLAYING){
+
+        /*frame_counter++;*/
+        /*fps = frame_counter / (time16/16);*/
+
         time_played += delta;
         step_time_accum += delta;
         if(step_time_accum > step_time){
             step_time_accum = 0;
             step();
+            ga_changed = TRUE;
+            intf_changed = TRUE;
         }
     }
 
@@ -113,9 +121,12 @@ void handle_input(){
         if(game_state == GAME_STATE_PLAYING ||
                 game_state == GAME_STATE_PAUSED){
             toggle_pause();
+            intf_changed = TRUE;
         }
         else{
             new_game();
+            intf_changed = TRUE;
+            ga_changed = TRUE;
         }
     }
 
@@ -123,15 +134,19 @@ void handle_input(){
 
         if(is_button_just_pressed(J_LEFT)){
             move_block_left();
+            ga_changed = TRUE;
         }
         if(is_button_just_pressed(J_RIGHT)){
             move_block_right();
+            ga_changed = TRUE;
         }
         if(is_button_just_pressed(J_UP) || is_button_just_pressed(J_B)){
             rotate_block();
+            ga_changed = TRUE;
         }
         if(is_button_just_pressed(J_DOWN) || is_button_just_pressed(J_A)){
             drop_block_down();
+            ga_changed = TRUE;
         }
 
     }
@@ -365,6 +380,7 @@ void spawn_new_block(){
     set_current_block_pos(3, 0);
     if(does_collide(DIRECTION_NONE)){
         game_state = GAME_STATE_GAMEOVER;
+        intf_changed = TRUE;
         //TODO: stop playing background music
         //TODO: play gameOver sound
     }
