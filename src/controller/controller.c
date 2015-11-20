@@ -53,8 +53,7 @@ void update(UINT16 delta){
 
 void handle_input(){
 
-    if(is_button_just_pressed(J_START) ||
-            is_button_just_pressed(J_START)){
+    if(is_button_just_pressed(J_START)){
 
         if(game_state == GAME_STATE_PLAYING ||
                 game_state == GAME_STATE_PAUSED){
