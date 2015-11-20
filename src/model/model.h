@@ -21,9 +21,6 @@ extern INT8 current_block_pos_y;
 extern UINT8 step_time;//in 16th seconds
 extern BOOLEAN has_current_block;
 
-extern UINT16 frame_counter;
-extern UINT16 fps;
-
 extern BOOLEAN ga_changed;
 extern BOOLEAN intf_changed;
 extern BOOLEAN intf_full_clear_needed;
@@ -37,10 +34,6 @@ void set_grid_cell(UINT8 x, UINT8 y, BOOLEAN value);
 void increase_score(UINT32 amount);
 void increase_lines_cleared();
 void set_current_block_pos(INT8 x, INT8 y);
-
-
-
-
 
 
 #endif

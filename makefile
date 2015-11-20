@@ -3,12 +3,10 @@ CC=$(GBDKDIR)bin/lcc
 BIN_RELEASE=bin/release.gb
 BIN_DEBUG=bin/debug.gb
 
-#GB_FRAMEWORK_DIR=../gb_framework/src/
 GB_FRAMEWORK_SRC=../gb_framework/src/sound.c ../gb_framework/src/gfx.c ../gb_framework/src/timer.c ../gb_framework/src/input.c ../gb_framework/src/log.c
 GB_FRAMEWORK_TILES=../gb_framework/src/tiles/colorRects.c
 
 SRC=src/main.c src/block/block.c src/controller/controller.c src/model/model.c src/view/view.c src/view/gfx_tetris.c
-#TILES=src/tiles/white.c src/tiles/light_grey.c src/tiles/dark_grey.c src/tiles/black.c
 TILES=src/tiles/blocks.c
 
 release: $(SRC) $(GB_FRAMEWORK_SRC)

@@ -1,7 +1,5 @@
 #include "block.h"
 
-#include <stdlib.h>
-
 const UINT8 SHAPE_TYPE_I = 0;
 const UINT8 SHAPE_TYPE_J = 1;
 const UINT8 SHAPE_TYPE_L = 2;
@@ -213,10 +211,6 @@ const BOOLEAN shape_grids[7][4][4][4] = {
 
 UINT8 current_rotation = 0;
 UINT8 shape_type = 0;
-/*UINT8 tiles[7] = {2, 3, 4, 5, 6, 7, 8};*/
-/*UINT8 tiles[7] = {42, 43, 44, 45, 46, 39, 40};*/
-/*UINT8 tiles[7] = {39, 39, 39, 39, 39, 39, 39};*/
-/*UINT8 tiles[7] = {0, 39, 39, 39, 39, 39, 39};*/
 
 void rotate(){
     current_rotation++;
@@ -232,10 +226,6 @@ void new_block(UINT8 type){
 BOOLEAN (*get_block_grid())[4][4]{
      return shape_grids[shape_type][current_rotation];
 }
-
-/*UINT8 get_tile(){*/
-    /*return tiles[shape_type];*/
-/*}*/
 
 UINT8 get_shape_type(){
     return shape_type;

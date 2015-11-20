@@ -3,10 +3,6 @@
 
 #include <gb/gb.h>
 
-
 void update(UINT16 delta);
-
-
-
 
 #endif
