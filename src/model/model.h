@@ -24,6 +24,9 @@ extern BOOLEAN has_current_block;
 
 void reset_model();
 
+BOOLEAN get_grid_cell(UINT8 x, UINT8 y);
+void set_grid_cell(UINT8 x, UINT8 y, BOOLEAN value);
+
 void increase_score(UINT32 amount);
 void increase_lines_cleared();
 void set_current_block_pos(INT8 x, INT8 y);

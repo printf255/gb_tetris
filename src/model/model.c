@@ -3,7 +3,7 @@
 const UINT8 SCORE_PER_LINE = 100;
 const UINT8 SCORE_PER_BLOCK = 10;
 const UINT8 GRID_WIDTH = 10;
-const UINT8 GRID_HEIGHT = 20;
+const UINT8 GRID_HEIGHT = 18;
 
 BOOLEAN grid[10][18];
 UINT8 grid_tiles[10][18];
@@ -18,6 +18,22 @@ UINT8 step_time = 16;//in 16th seconds
 BOOLEAN has_current_block = FALSE;
 
 
+BOOLEAN get_grid_cell(UINT8 x, UINT8 y){
+    if(x < 0 || x >= GRID_WIDTH)
+        return TRUE;
+    if(y < 0 || y >= GRID_HEIGHT)
+        return TRUE;
+    return grid[x][y];
+}
+
+void set_grid_cell(UINT8 x, UINT8 y, BOOLEAN value){
+    if(x < 0 || x >= GRID_WIDTH)
+        return;
+    if(y < 0 || y >= GRID_HEIGHT)
+        return;
+    grid[x][y] = value;
+}
+
 void reset_model(){
     UINT8 i = 0;
     UINT8 j = 0;
@@ -25,6 +41,7 @@ void reset_model(){
     for(i = 0; i < 10; i++){
         for(j = 0; j < 18; j++){
             grid[i][j] = FALSE;
+            grid_tiles[i][j] = 0;
         }
     }
 
